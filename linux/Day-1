@@ -1,0 +1,458 @@
+ssh -i ~/.ssh/hotfixdevops.pem ubuntu@13.233.120.45
+
+ssh -i ~/.ssh/hotfixdevops.pem ubuntu@35.154.190.96
+
+==========================================
+Where we will use Linux OS in Realtime ?
+========================================
+
+1. Application deployment will happen on Linux machines
+
+2. DevOps tools will be installed on Linux machines
+
+   ```
+    Ex: Docker, Kubernetes, Jenkins, Nexus, SonarQube, ELK etc...
+   ```
+
+3. Application log files will be stored on Linux machines
+
+   ```
+    Ex: /var/log
+        Application-specific log directories
+        Jenkins logs
+        Apache logs
+        Kubernetes/container logs
+   ```
+
+==============
+What is OS ?
+============
+
+=> OS stands for Operating System
+
+=> It is software which acts as a mediator between user and computer
+
+=> Users communicate with computers using OS
+
+=> Without an operating system, we cannot normally use a computer to run applications
+
+=> OS provides a platform to run applications on a computer
+
+```
+    Ex: Notepad, Calculator, Browser, Tomcat, Eclipse,
+        Java applications, Docker, Jenkins etc...
+```
+
+=> We have several operating systems in the market
+
+```
+    Ex: Windows, Linux, macOS, Android, iOS etc...
+```
+
+===========
+Windows OS
+==========
+
+=> Developed by Microsoft
+
+=> Windows has both GUI and command-line administration tools
+
+=> Windows is widely used for desktop and personal computing
+
+=> Windows is also used in enterprise environments for
+Active Directory, application servers, databases and other workloads
+
+=> Windows provides built-in security features such as
+Windows Defender, firewall, user accounts and access controls
+
+=> Windows can be used for both personal and enterprise purposes
+
+```
+    Ex:
+    Internet browsing
+    Games
+    Movies
+    Online classes
+    Office applications
+    Enterprise applications
+```
+
+=========
+Linux OS
+========
+
+=> Linux is an open-source operating system ecosystem built around
+the Linux kernel
+
+=> Linux source code is available under open-source licensing
+
+=> Linux servers are commonly administered using CLI
+
+=> Linux supports multiple users and multiple processes
+
+=> Linux provides strong security features such as
+
+```
+    User accounts
+    Groups
+    File permissions
+    Ownership
+    sudo
+    Firewall
+    SSH security
+    Mandatory access control on supported distributions
+```
+
+=> Linux does not mean "antivirus is never required"
+
+Note:
+Security requirements depend on the environment, application,
+threat model and company security policy.
+
+=> Linux kernel was originally created by Linus Torvalds
+
+=> Linux is widely used to manage servers
+
+```
+    Ex:
+    Application Servers
+    Database Servers
+    Web Servers
+    Docker
+    Kubernetes
+    Jenkins
+    Nexus
+    SonarQube
+    Monitoring Servers
+    Logging Servers
+```
+
+==============
+Linux History
+=============
+
+-> Linus Torvalds started developing the Linux kernel in 1991
+
+-> Linux was inspired by Unix-like operating systems and Minix
+
+-> Linus Torvalds created the Linux kernel as a Unix-like operating
+system kernel and released it under an open-source license
+
+-> Linux later became the foundation for many operating systems
+and distributions
+
+Note:
+
+The commonly taught explanation
+
+```
+    (Li)nus + Mi(nux) = Linux
+```
+
+is popular Linux history/lore, but Linux is more accurately understood
+as the name of the kernel/project rather than simply a word combination.
+
+=====================
+Linux Distributions
+===================
+
+-> Linux is an open-source kernel
+
+-> Different organizations and communities build complete operating
+systems around the Linux kernel
+
+-> These complete operating systems are called Linux Distributions
+
+-> Different distributions provide their own:
+
+```
+    Package repositories
+    Package management
+    Default configurations
+    Installer
+    Security tools
+    Support model
+    Release lifecycle
+```
+
+-> We have many Linux distributions in the market
+
+```
+    Ex:
+    Ubuntu
+    Debian
+    Red Hat Enterprise Linux
+    Fedora
+    SUSE
+    Amazon Linux
+    Kali Linux
+    Rocky Linux
+    AlmaLinux
+```
+
+==============================
+How to setup Linux Machine ?
+============================
+
+Approach-1) Install Linux OS directly on a computer
+
+Approach-2) Use VirtualBox / VMware and install Ubuntu
+as Guest OS on Windows
+
+Approach-3) Setup Ubuntu Linux VM in AWS Cloud
+
+Approach-4) Use WSL2 on Windows for Linux practice
+
+For DevOps training:
+
+```
+    AWS EC2 Ubuntu VM
+    or
+    Local Ubuntu VM / WSL2
+```
+
+are commonly used for hands-on practice.
+
+============================
+Setup Linux VM in AWS Cloud
+===========================
+
+Step-1 : Login into AWS cloud account
+
+Step-2 : Create EC2 Instance (Ubuntu Linux VM)
+
+```
+    AMI:
+    Ubuntu Server LTS
+
+    Instance Type:
+    Choose an instance size appropriate for your lab
+
+    Example:
+    t3.micro / t3.small
+
+    Note:
+    Free-tier eligibility depends on the current AWS account,
+    region and AWS free-tier rules.
+```
+
+Step-3 : Configure Security Group
+
+```
+    SSH
+    Port : 22
+
+    Source:
+    Prefer your own IP address rather than 0.0.0.0/0
+```
+
+Step-4 : Connect with EC2 instance using SSH Client
+
+```
+    Git Bash
+    Windows PowerShell
+    Windows Terminal
+    MobaXterm
+    putty tool
+```
+
+
+
+
+================
+Linux Commands
+==============
+
+=> Linux servers are commonly administered using CLI
+
+=> We will perform operations in Ubuntu Linux VM using Linux commands
+
+whoami
+
+pwd
+
+date
+
+cal
+
+cat /etc/os-release   :  to see os 
+
+Note:
+
+If the `cal` command is not available in your Ubuntu installation,
+install the package providing it before using it.
+
+```
+    sudo apt update
+    sudo apt install ncal -y
+```
+
+mkdir : Make directory
+
+```
+    mkdir velguru
+
+    mkdir java python aws devops
+```
+
+rmdir : Remove empty directory
+
+```
+    rmdir devops
+```
+
+ls : List files/directories of present working directory
+
+```
+    ls -l
+    Display detailed listing
+
+    ls -lr
+    Display detailed listing in reverse order
+
+    ls -lt
+    Display files based on modification time
+    Latest files first
+
+    ls -ltr
+    Display files based on modification time
+    Oldest files first
+
+    ls -la
+    Display hidden files also
+```
+
+cd : Change directory / navigation
+
+```
+    cd <dir-name>
+    Go inside the directory
+
+    cd ..
+    Come out from current directory
+
+    cd ~
+    Go to current user's home directory
+```
+
+touch : To create empty files
+
+```
+    touch f1.txt
+
+    touch f2.txt f3.txt f4.txt
+```
+
+cat : Create file with data + append data + print file data
+
+```
+    cat > f1.txt
+    Create new file with data
+
+    enter cntrl+d to save a
+
+    cat >> f1.txt
+    Append data to existing file
+
+    cat f1.txt
+    Print file data from top to bottom
+
+    cat -n f1.txt
+    Print file data along with line numbers
+```
+
+rm : Remove files/directories
+
+```
+    rm f1.txt
+    Remove a file
+
+    rm -r devops
+    Remove a directory and its contents
+
+    rm -rf devops
+    Forcefully remove directory and its contents
+```
+
+Note:
+Be very careful with `rm -rf`.
+
+It can permanently delete data.
+
+cp : Copy files/directories
+
+```
+    cp f1.txt f2.txt
+
+    cp f1.txt devops/
+
+    cp -r java devops/
+```
+
+Note:
+To combine the contents of multiple files:
+
+```
+    cat f1.txt f2.txt > f3.txt
+```
+
+mv : Rename or move files/directories
+
+```
+    mv linux.txt linux-os.txt
+
+    mv git.txt devops/
+
+    mv java devops/
+```
+
+=======================================================================
+
+tac : Read file data from bottom to top
+
+```
+    tac f1.txt
+```
+
+wc : Word/line/character count
+
+```
+    wc f1.txt
+
+    wc -l f1.txt
+    Count lines
+
+    wc -w f1.txt
+    Count words
+
+    wc -c f1.txt
+    Count bytes
+```
+
+rev : Reverse characters of each line and print
+
+```
+    rev f1.txt
+```
+
+========================================
+
+head : Display file data from top
+
+```
+    head app.log
+
+    head -n 20 app.log
+
+    head -n 25 app.log
+```
+
+tail : Display file data from bottom
+
+```
+    tail app.log
+
+    tail -n 20 app.log
+
+    tail -n 100 app.log
+```
