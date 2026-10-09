@@ -1,0 +1,1905 @@
+ssh -i ~/.ssh/hotfixdevops.pem ubuntu@13.233.120.45
+
+ssh -i ~/.ssh/hotfixdevops.pem ubuntu@35.154.190.96
+
+==========================================
+Where we will use Linux OS in Realtime ?
+========================================
+
+1. Application deployment will happen on Linux machines
+
+2. DevOps tools will be installed on Linux machines
+
+   ```
+    Ex: Docker, Kubernetes, Jenkins, Nexus, SonarQube, ELK etc...
+   ```
+
+3. Application log files will be stored on Linux machines
+
+   ```
+    Ex: /var/log
+        Application-specific log directories
+        Jenkins logs
+        Apache logs
+        Kubernetes/container logs
+   ```
+
+==============
+What is OS ?
+============
+
+=> OS stands for Operating System
+
+=> It is software which acts as a mediator between user and computer
+
+=> Users communicate with computers using OS
+
+=> Without an operating system, we cannot normally use a computer to run applications
+
+=> OS provides a platform to run applications on a computer
+
+```
+    Ex: Notepad, Calculator, Browser, Tomcat, Eclipse,
+        Java applications, Docker, Jenkins etc...
+```
+
+=> We have several operating systems in the market
+
+```
+    Ex: Windows, Linux, macOS, Android, iOS etc...
+```
+
+===========
+Windows OS
+==========
+
+=> Developed by Microsoft
+
+=> Windows has both GUI and command-line administration tools
+
+=> Windows is widely used for desktop and personal computing
+
+=> Windows is also used in enterprise environments for
+Active Directory, application servers, databases and other workloads
+
+=> Windows provides built-in security features such as
+Windows Defender, firewall, user accounts and access controls
+
+=> Windows can be used for both personal and enterprise purposes
+
+```
+    Ex:
+    Internet browsing
+    Games
+    Movies
+    Online classes
+    Office applications
+    Enterprise applications
+```
+
+=========
+Linux OS
+========
+
+=> Linux is an open-source operating system ecosystem built around
+the Linux kernel
+
+=> Linux source code is available under open-source licensing
+
+=> Linux servers are commonly administered using CLI
+
+=> Linux supports multiple users and multiple processes
+
+=> Linux provides strong security features such as
+
+```
+    User accounts
+    Groups
+    File permissions
+    Ownership
+    sudo
+    Firewall
+    SSH security
+    Mandatory access control on supported distributions
+```
+
+=> Linux does not mean "antivirus is never required"
+
+Note:
+Security requirements depend on the environment, application,
+threat model and company security policy.
+
+=> Linux kernel was originally created by Linus Torvalds
+
+=> Linux is widely used to manage servers
+
+```
+    Ex:
+    Application Servers
+    Database Servers
+    Web Servers
+    Docker
+    Kubernetes
+    Jenkins
+    Nexus
+    SonarQube
+    Monitoring Servers
+    Logging Servers
+```
+
+==============
+Linux History
+=============
+
+-> Linus Torvalds started developing the Linux kernel in 1991
+
+-> Linux was inspired by Unix-like operating systems and Minix
+
+-> Linus Torvalds created the Linux kernel as a Unix-like operating
+system kernel and released it under an open-source license
+
+-> Linux later became the foundation for many operating systems
+and distributions
+
+Note:
+
+The commonly taught explanation
+
+```
+    (Li)nus + Mi(nux) = Linux
+```
+
+is popular Linux history/lore, but Linux is more accurately understood
+as the name of the kernel/project rather than simply a word combination.
+
+=====================
+Linux Distributions
+===================
+
+-> Linux is an open-source kernel
+
+-> Different organizations and communities build complete operating
+systems around the Linux kernel
+
+-> These complete operating systems are called Linux Distributions
+
+-> Different distributions provide their own:
+
+```
+    Package repositories
+    Package management
+    Default configurations
+    Installer
+    Security tools
+    Support model
+    Release lifecycle
+```
+
+-> We have many Linux distributions in the market
+
+```
+    Ex:
+    Ubuntu
+    Debian
+    Red Hat Enterprise Linux
+    Fedora
+    SUSE
+    Amazon Linux
+    Kali Linux
+    Rocky Linux
+    AlmaLinux
+```
+
+==============================
+How to setup Linux Machine ?
+============================
+
+Approach-1) Install Linux OS directly on a computer
+
+Approach-2) Use VirtualBox / VMware and install Ubuntu
+as Guest OS on Windows
+
+Approach-3) Setup Ubuntu Linux VM in AWS Cloud
+
+Approach-4) Use WSL2 on Windows for Linux practice
+
+For DevOps training:
+
+```
+    AWS EC2 Ubuntu VM
+    or
+    Local Ubuntu VM / WSL2
+```
+
+are commonly used for hands-on practice.
+
+============================
+Setup Linux VM in AWS Cloud
+===========================
+
+Step-1 : Login into AWS cloud account
+
+Step-2 : Create EC2 Instance (Ubuntu Linux VM)
+
+```
+    AMI:
+    Ubuntu Server LTS
+
+    Instance Type:
+    Choose an instance size appropriate for your lab
+
+    Example:
+    t3.micro / t3.small
+
+    Note:
+    Free-tier eligibility depends on the current AWS account,
+    region and AWS free-tier rules.
+```
+
+Step-3 : Configure Security Group
+
+```
+    SSH
+    Port : 22
+
+    Source:
+    Prefer your own IP address rather than 0.0.0.0/0
+```
+
+Step-4 : Connect with EC2 instance using SSH Client
+
+```
+    Git Bash
+    Windows PowerShell
+    Windows Terminal
+    MobaXterm
+    putty tool
+```
+
+
+
+
+================
+Linux Commands
+==============
+
+=> Linux servers are commonly administered using CLI
+
+=> We will perform operations in Ubuntu Linux VM using Linux commands
+
+whoami
+
+pwd
+
+date
+
+cal
+
+cat /etc/os-release   :  to see os 
+
+Note:
+
+If the `cal` command is not available in your Ubuntu installation,
+install the package providing it before using it.
+
+```
+    sudo apt update
+    sudo apt install ncal -y
+```
+
+mkdir : Make directory
+
+```
+    mkdir velguru
+
+    mkdir java python aws devops
+```
+
+rmdir : Remove empty directory
+
+```
+    rmdir devops
+```
+
+ls : List files/directories of present working directory
+
+```
+    ls -l
+    Display detailed listing
+
+    ls -lr
+    Display detailed listing in reverse order
+
+    ls -lt
+    Display files based on modification time
+    Latest files first
+
+    ls -ltr
+    Display files based on modification time
+    Oldest files first
+
+    ls -la
+    Display hidden files also
+```
+
+cd : Change directory / navigation
+
+```
+    cd <dir-name>
+    Go inside the directory
+
+    cd ..
+    Come out from current directory
+
+    cd ~
+    Go to current user's home directory
+```
+
+touch : To create empty files
+
+```
+    touch f1.txt
+
+    touch f2.txt f3.txt f4.txt
+```
+
+cat : Create file with data + append data + print file data
+
+```
+    cat > f1.txt
+    Create new file with data
+
+    enter cntrl+d to save a
+
+    cat >> f1.txt
+    Append data to existing file
+
+    cat f1.txt
+    Print file data from top to bottom
+
+    cat -n f1.txt
+    Print file data along with line numbers
+```
+
+rm : Remove files/directories
+
+```
+    rm f1.txt
+    Remove a file
+
+    rm -r devops
+    Remove a directory and its contents
+
+    rm -rf devops
+    Forcefully remove directory and its contents
+```
+
+Note:
+Be very careful with `rm -rf`.
+
+It can permanently delete data.
+
+cp : Copy files/directories
+
+```
+    cp f1.txt f2.txt
+
+    cp f1.txt devops/
+
+    cp -r java devops/
+```
+
+Note:
+To combine the contents of multiple files:
+
+```
+    cat f1.txt f2.txt > f3.txt
+```
+
+mv : Rename or move files/directories
+
+```
+    mv linux.txt linux-os.txt
+
+    mv git.txt devops/
+
+    mv java devops/
+```
+
+=======================================================================
+
+tac : Read file data from bottom to top
+
+```
+    tac f1.txt
+```
+
+wc : Word/line/character count
+
+```
+    wc f1.txt
+
+    wc -l f1.txt
+    Count lines
+
+    wc -w f1.txt
+    Count words
+
+    wc -c f1.txt
+    Count bytes
+```
+
+rev : Reverse characters of each line and print
+
+```
+    rev f1.txt
+```
+
+========================================
+
+head : Display file data from top
+
+```
+    head app.log
+
+    head -n 20 app.log
+
+    head -n 25 app.log
+```
+
+tail : Display file data from bottom
+
+```
+    tail app.log
+
+    tail -n 20 app.log
+
+    tail -n 100 app.log
+```
+
+Note:
+
+For real-time application troubleshooting:
+
+```
+    tail -f app.log
+```
+
+is commonly used to continuously monitor a log file.
+
+grep : grep stands for Global Regular Expression Print
+
+Note:
+We use grep for keyword/pattern searching in files.
+
+```
+    grep 'exception' app.log
+
+    Print lines containing "exception"
+
+
+    grep -i 'exception' app.log
+
+    Ignore case sensitivity
+
+
+    grep -n 'java' app.log
+
+    Print matching lines along with line numbers
+
+
+    grep -v 'apache' app.log
+
+    Print lines which do not contain "apache"
+
+
+    grep -r 'exception' /var/log/
+
+    Search recursively inside a directory
+```
+
+=======================
+Text Editors in Linux
+=====================
+
+=> vi/vim are commonly used terminal editors in Linux
+
+=> Using vi/vim we can create new files and edit existing files
+
+```
+    vi f1.txt
+```
+
+=> vi command is commonly taught with 3 modes
+
+```
+    a) Command mode
+       Used to navigate and perform commands
+
+    b) Insert mode
+       Used to edit file data
+
+       Press `i`
+
+    c) Command-line mode
+       Used to save/quit
+
+       Press `Esc`
+
+       Then:
+
+       :wq
+       Save and exit
+
+       :wq!
+       Force save and exit
+
+       :q!
+       Exit without saving
+```
+
+Note:
+
+vi will open the file if it already exists.
+
+If the file does not exist, vi can create the file when
+the changes are saved.
+
+===================================
+File creation commands in Linux
+===============================
+
+touch : Create empty file
+
+```
+    touch f1.txt
+```
+
+cat : Create file with data
+
+```
+    cat > f1.txt
+```
+
+cp : Copy file/data
+
+```
+    cp f1.txt f2.txt
+```
+
+vi : Create and open file for editing
+
+```
+    vi f1.txt
+```
+
+====================================
+Reading file data commands in Linux
+===================================
+
+cat : Print file data from top to bottom
+
+tac : Print file data from bottom to top
+
+rev : Print each line in reverse character order
+
+head : Print top lines of file
+
+tail : Print last lines of file
+
+vi : Open file for editing
+
+=============
+SED command
+===========
+
+=> SED stands for Stream Editor
+
+=> It is used to process file data
+
+=> Using sed, we can perform operations on file data without
+opening the file manually
+
+# Replace first occurrence of linux keyword with unix in every line
+
+sed 's/linux/unix/' linux-os.txt
+
+# Replace second occurrence of linux with unix in every line
+
+sed 's/linux/unix/2' linux-os.txt
+
+# Replace all occurrences
+
+sed 's/linux/unix/g' linux-os.txt
+
+# Substitute and save changes in original file
+
+sed -i 's/linux/unix/g' linux-os.txt
+
+# Delete second line
+
+sed -i '2d' linux-os.txt
+
+# Delete fourth line
+
+sed -i '4d' linux-os.txt
+
+# Delete last line
+
+sed -i '$d' linux-os.txt
+
+# Delete from nth line to last line
+
+sed -i 'n,$d' linux-os.txt
+
+Example:
+
+sed -i '5,$d' linux-os.txt
+
+# Delete from 2nd line to 10th line
+
+sed -i '2,10d' linux-os.txt
+
+# Print data from 3rd line to 6th line
+
+sed -n '3,6p' linux-os.txt
+
+# Insert data after 4th line
+
+sed '4i\i am from Velguru' linux-os.txt
+
+# Add given text after last line
+
+sed '$a\i love linux' linux-os.txt
+
+===========================
+Working with User Accounts
+==========================
+
+=> Linux is a multi-user operating system
+
+=> Multiple users can access a single Linux machine
+
+=> Different users can have different permissions
+
+=> Every Ubuntu installation normally has at least one administrative
+user created during installation/cloud provisioning
+
+Note:
+
+For Ubuntu EC2 instances, the default login username for official
+Ubuntu AMIs is commonly:
+
+```
+    ubuntu
+```
+
+The exact username depends on the AMI being used.
+
+# Create user
+
+sudo adduser <username>
+
+# Alternative lower-level command
+
+sudo useradd <username>
+
+Note:
+For beginner training, `adduser` is generally easier because it
+interactively creates the account and home directory.
+
+# Set password for user
+
+sudo passwd <username>
+
+# Display all users available in Linux VM
+
+cat /etc/passwd
+
+# Switch user
+
+sudo su - <username>
+
+# Go to current user's home directory
+
+cd ~
+
+# Delete user account
+
+sudo userdel <username>
+
+# Delete user account along with home directory
+
+sudo userdel -r <username>
+
+# Change username
+
+sudo usermod -l <new-name> <old-name>
+
+# Display current user's ID and groups
+
+id
+
+================================
+What is sudoers file in Linux
+=============================
+
+=> It is an important configuration file in Linux
+
+=> Using sudo configuration, we can control which users/groups
+can execute commands with elevated privileges
+
+=> Main sudoers configuration file:
+
+```
+    /etc/sudoers
+```
+
+# Print sudoers file content
+
+sudo cat /etc/sudoers
+
+Note:
+
+We should be very careful while modifying sudo configuration.
+
+An incorrect sudo configuration can prevent administrators
+from performing administrative operations.
+
+########## Giving sudo privileges for user ##########
+
+# Open sudoers configuration safely
+
+sudo visudo
+
+# Configure user like below
+
+<username> ALL=(ALL:ALL) ALL
+
+Note:
+
+On Ubuntu, adding a user to the `sudo` group is also commonly used:
+
+```
+    sudo usermod -aG sudo <username>
+```
+
+After adding the user to the sudo group, the user should start
+a new login session for the group membership to take effect.
+
+========================================================
+How to enable password based authentication in Linux ?
+======================================================
+
+=> Ubuntu OpenSSH uses the `PasswordAuthentication` configuration
+directive.
+
+=> On secure production servers, SSH key-based authentication is
+generally preferred.
+
+=> Password authentication should only be enabled when required
+by the lab/environment security policy.
+
+# Display SSH server configuration
+
+sudo cat /etc/ssh/sshd_config
+
+# Open SSH server configuration
+
+sudo vi /etc/ssh/sshd_config
+
+# Configure:
+
+PasswordAuthentication yes
+
+Note:
+
+Configuration may also be provided through files under:
+
+```
+    /etc/ssh/sshd_config.d/
+```
+
+# Validate SSH configuration before restarting
+
+sudo sshd -t
+
+# Restart SSH service
+
+sudo systemctl restart ssh.service
+
+Important:
+
+Always validate SSH configuration before restarting the service.
+
+Never close your existing SSH session until you have confirmed
+that a new SSH connection works.
+
+=====================
+Log Server Details
+==================
+
+Note:
+
+Do not store real production usernames, passwords or public IP
+addresses inside training documentation.
+
+For lab practice:
+
+```
+    Public IP    : <ubuntu-public-ip>
+    Username     : <username>
+```
+
+# Connect using SSH
+
+ssh <username>@<public-ip>
+
+Example:
+
+ssh ubuntu@<public-ip>
+
+Note:
+
+For password-based SSH login:
+
+```
+    PasswordAuthentication yes
+```
+
+must be configured on the SSH server and the required network
+access must be allowed.
+
+For production environments, prefer SSH key-based authentication.
+
+===========================
+Working with User Groups
+========================
+
+=> Linux uses groups to manage access to files and resources
+
+=> A user can belong to one or multiple groups
+
+# Display all groups available
+
+cat /etc/group
+
+# Create new group
+
+sudo groupadd <group-name>
+
+# Add user to group
+
+sudo usermod -aG <group-name> <username>
+
+# Display user's groups
+
+groups <username>
+
+# Display detailed user/group information
+
+id <username>
+
+# Remove user from group
+
+sudo gpasswd -d <username> <group-name>
+
+# Delete group
+
+sudo groupdel <group-name>
+
+=======================================
+
+1. File permissions & ownership
+   chmod & chown
+
+2. Networking commands
+
+3. Package Managers
+
+4. Linux Architecture
+
+=================
+File Permissions
+================
+
+ubuntu => /home/ubuntu ==> f1.txt
+
+rakesh  => /home/rakesh  ==> f1.txt
+
+rajesh  => /home/rajesh  ==> f2.txt
+
+teja => /home/teja ==> f3.txt
+
+=> We can create several user accounts in a single Linux VM
+
+=> Multiple users can connect to a single Linux VM at the same time
+
+=> Different users can access different files based on permissions
+
+=> To protect files and directories we use file permissions
+
+=> In Linux, file permissions are divided into 3 types
+
+```
+    r => read
+    w => write
+    x => execute
+```
+
+=> A file/directory contains 3 permission sections
+
+```
+    user (owner) => u
+
+    group         => g
+
+    others        => o
+```
+
+=> Example:
+
+```
+    rwxrwxrwx f1.txt
+
+    user:
+    read + write + execute
+
+    group:
+    read + write + execute
+
+    others:
+    read + write + execute
+
+
+    rw-r--r-- f2.txt
+
+    user:
+    read + write
+
+    group:
+    read
+
+    others:
+    read
+
+
+    rwxr-xr-x java
+
+    user:
+    read + write + execute
+
+    group:
+    read + execute
+
+    others:
+    read + execute
+
+
+    r-xr----x sbms
+
+    user:
+    read + execute
+
+    group:
+    read
+
+    others:
+    execute
+```
+
+=> To change file permissions we use `chmod` command
+
+# Giving execute permission for user
+
+chmod u+x f1.txt
+
+# Giving write permission for group
+
+chmod g+w f1.txt
+
+# Remove execute permission for others
+
+chmod o-x f1.txt
+
+# Remove all permissions for others
+
+chmod o-rwx f1.txt
+
+# Give all permissions for group
+
+chmod g+rwx f1.txt
+
+====================================
+File Permissions in Numeric Format
+==================================
+
+0 => No Permission
+
+1 => Execute
+
+2 => Write
+
+3 => Write + Execute
+
+4 => Read
+
+5 => Read + Execute
+
+6 => Read + Write
+
+7 => Read + Write + Execute
+
+chmod 765 f1.txt
+
+```
+    user:
+    read + write + execute
+
+    group:
+    read + write
+
+    others:
+    read + execute
+```
+
+chmod 456 f1.txt
+
+```
+    user:
+    read
+
+    group:
+    read + execute
+
+    others:
+    read + write
+```
+
+====================
+Ownership change
+================
+
+=> To change file/directory ownership we use `chown` command
+
+# Change owner
+
+sudo chown new-owner file/directory
+
+# Change group
+
+sudo chown :new-group file/directory
+
+# Change owner and group
+
+sudo chown new-owner:new-group file/directory
+
+# Change ownership recursively
+
+sudo chown -R new-owner:new-group directory
+
+============================================
+Q) What is the diff between chmod & chown ?
+===========================================
+
+chmod
+=> Used to change file/directory permissions
+
+chown
+=> Used to change file/directory owner/group
+
+=====================
+Networking Commands
+===================
+
+ping : To check network connectivity
+
+```
+    ping www.google.com
+
+    ping 8.8.8.8
+
+    ping 192.168.1.20
+```
+
+Note:
+
+Ping may be blocked by firewalls/security groups.
+A failed ping does not always mean that the network is completely down.
+
+wget : Used to download files from the internet
+
+```
+    wget https://example.com/file.txt
+```
+
+curl : Used to send HTTP requests / test APIs
+
+```
+    curl https://example.com
+
+    curl -I https://example.com
+```
+
+ip : Used to display and manage network interfaces
+
+```
+    ip addr
+
+    ip route
+
+    ip link
+```
+
+Note:
+
+`ifconfig` is a legacy command.
+
+For modern Ubuntu administration, prefer:
+
+```
+    ip addr
+
+    ip route
+
+    ip link
+```
+
+=======================================
+
+whoami
+pwd
+date
+cal
+mkdir
+rmdir
+touch
+ls -ltr
+cat
+cp
+rm -rf
+mv
+tac
+head
+tail
+grep
+vi
+sed
+
+adduser
+useradd
+userdel
+usermod
+groupadd
+groupdel
+id
+groups
+
+chmod
+chown
+
+ping
+wget
+curl
+ip addr
+ip route
+ip link
+
+==========================
+Package Managers in Linux
+=========================
+
+=> Package managers are used to install software in Linux machines
+
+=> Package managers are specific to Linux distributions
+
+```
+    Ubuntu + Debian
+    ----------------
+    apt
+
+
+    Red Hat based distributions
+    ----------------------------
+    dnf / yum
+
+
+    Amazon Linux
+    ------------
+    dnf / yum depending on release
+```
+
+For Ubuntu, we will use APT.
+
+# Update package repository information
+
+sudo apt update
+
+# Upgrade installed packages
+
+sudo apt upgrade -y
+
+# Install Git
+
+sudo apt install git -y
+
+# Install Java
+
+sudo apt install openjdk-21-jdk -y
+
+# Check Java version
+
+java -version
+
+# Install Maven
+
+sudo apt install maven -y
+
+# Check Maven version
+
+mvn -version
+
+# Search package
+
+apt search <package-name>
+
+# Display package information
+
+apt show <package-name>
+
+# Remove package
+
+sudo apt remove <package-name>
+
+# Remove package and configuration files
+
+sudo apt purge <package-name>
+
+# Remove unused dependencies
+
+sudo apt autoremove
+
+Note:
+
+`apt` is convenient for interactive terminal usage.
+
+For scripts, `apt-get` is preferred because it is designed
+for more stable scripting/non-interactive use.
+
+================================
+Install WebServer in Linux VM
+=============================
+
+=> Web server is software used to serve websites/content over HTTP/HTTPS
+
+=> Websites/applications can broadly contain:
+
+```
+    1) Static content
+
+            HTML
+            CSS
+            JavaScript
+            Images
+
+    2) Dynamic application content
+
+            Java
+            Python
+            Node.js
+            PHP
+            .NET etc.
+```
+
+=> For static websites, we can use Apache HTTP Server or Nginx
+
+=> For Java applications, application servers/framework runtimes
+such as Tomcat/Spring Boot may be used depending on architecture
+
+# Install Apache web server on Ubuntu
+
+sudo apt update
+
+sudo apt install apache2 -y
+
+# Check Apache service
+
+sudo systemctl status apache2
+
+# Start Apache
+
+sudo systemctl start apache2
+
+# Enable Apache to start automatically after reboot
+
+sudo systemctl enable apache2
+
+# Restart Apache
+
+sudo systemctl restart apache2
+
+Note:
+
+Apache HTTP Server normally listens on HTTP port 80.
+
+If this is an AWS EC2 VM, allow TCP port 80 in the EC2
+Security Group before accessing Apache from the internet.
+
+# Navigate to Apache webserver directory
+
+cd /var/www/html
+
+# Create index.html
+
+sudo vi index.html
+
+Example content:
+
+<h1>Welcome to Velguru Ubuntu Linux Server</h1>
+
+# Access from browser
+
+http://<ubuntu-public-ip>
+
+Note:
+
+Apache configuration and document-root paths can be customized,
+but `/var/www/html` is the standard default document root
+for Ubuntu's Apache package.
+
+=============================
+What is systemctl in Linux ?
+============================
+
+=> systemctl is a command-line utility used to manage systemd services
+
+=> Starting service
+
+=> Stopping service
+
+=> Restarting service
+
+=> Reloading service
+
+=> Enabling services
+
+=> Disabling services
+
+=> Checking service status
+
+# Check service status
+
+sudo systemctl status <service_name>
+
+# Start service
+
+sudo systemctl start <service_name>
+
+# Stop service
+
+sudo systemctl stop <service_name>
+
+# Restart service
+
+sudo systemctl restart <service_name>
+
+# Enable service at boot
+
+sudo systemctl enable <service_name>
+
+# Disable service at boot
+
+sudo systemctl disable <service_name>
+
+# Start service and enable it at boot
+
+sudo systemctl enable --now <service_name>
+
+# Example with Apache
+
+sudo systemctl status apache2
+
+sudo systemctl restart apache2
+
+sudo systemctl enable --now apache2
+
+=====================================
+How to change hostname in Linux VM ?
+====================================
+
+# Display hostname
+
+hostname
+
+# Set hostname
+
+sudo hostnamectl set-hostname <new-name>
+
+# Verify hostname
+
+hostname
+
+# Or
+
+hostnamectl
+
+Note:
+
+After changing the hostname, start a new SSH session if you
+want your shell prompt to immediately reflect the new hostname.
+
+=================
+whereis command
+===============
+
+=> Used to locate binary files, source files and manual pages
+associated with a command
+
+whereis java
+
+whereis maven
+
+whereis git
+
+Additional useful commands:
+
+which java
+
+which maven
+
+which git
+
+==============
+find command
+============
+
+=> find command is used to search files and directories
+
+# Find file whose name is oops.txt
+
+sudo find /home -name oops.txt
+
+# Find all empty files inside /home
+
+sudo find /home -type f -empty
+
+# Find all empty directories inside /home
+
+sudo find /home -type d -empty
+
+# Find files modified more than 30 days ago
+
+sudo find /home -type f -mtime +30 -print
+
+Note:
+
+`-mtime +30` means files modified more than 30 days ago.
+
+For production systems, always understand the files being selected
+before using delete operations with find.
+
+===============
+Assignment
+==========
+
+Deploy Spring Boot Application in Ubuntu Linux VM
+
+Practice:
+
+1. Create Ubuntu EC2 VM
+
+2. Connect using SSH
+
+3. Install Java
+
+4. Install Maven
+
+5. Upload Spring Boot JAR
+
+6. Create application user
+
+7. Create systemd service
+
+8. Start Spring Boot application
+
+9. Check application logs
+
+10. Configure application port in AWS Security Group
+
+11. Access application using browser/curl
+
+========
+Summary
+=======
+
+1. Why Linux for Java developers ?
+
+2. What is OS & why ?
+
+3. Windows vs Linux
+
+4. Linux History
+
+5. Linux Distributions
+
+6. Linux VM Setup
+
+7. Linux commands
+
+8. Working with directories & files
+
+9. Working with editors (vi & sed)
+
+10. Users & groups Management
+
+11. sudoers file & sshd_config file
+
+12. PasswordBasedAuthentication / SSH configuration
+
+13. File Permissions & Ownership
+
+14. Package Managers
+
+15. Services management (systemctl)
+
+16. Networking commands
+
+17. Apache Web Server
+
+18. Hostname management
+
+19. whereis / which
+
+20. find command
+
+==========================================
+🔥 IMPORTANT UBUNTU COMMAND CHEAT SHEET
+=======================================
+
+## User Information
+
+whoami
+
+id
+
+groups
+
+pwd
+
+## Files & Directories
+
+ls -la
+
+ls -ltr
+
+cd
+
+mkdir
+
+rmdir
+
+touch
+
+cp
+
+mv
+
+rm
+
+rm -rf
+
+## File Reading
+
+cat
+
+tac
+
+head
+
+tail
+
+less
+
+grep
+
+wc
+
+rev
+
+## Text Processing
+
+sed
+
+grep
+
+awk
+
+## Users
+
+adduser
+
+useradd
+
+usermod
+
+userdel
+
+passwd
+
+id
+
+groups
+
+## Groups
+
+groupadd
+
+groupdel
+
+usermod -aG
+
+gpasswd -d
+
+## Permissions
+
+chmod
+
+chown
+
+umask
+
+## Processes
+
+ps -ef
+
+top
+
+kill
+
+pkill
+
+## Services
+
+systemctl
+
+journalctl
+
+## Packages
+
+apt update
+
+apt upgrade
+
+apt install
+
+apt remove
+
+apt purge
+
+apt autoremove
+
+## Networking
+
+ping
+
+curl
+
+wget
+
+ip addr
+
+ip route
+
+ip link
+
+ss
+
+## SSH
+
+ssh
+
+ssh-keygen
+
+ssh-copy-id
+
+sshd -t
+
+## Disk
+
+df -h
+
+du -sh
+
+lsblk
+
+## Memory
+
+free -h
+
+## Search
+
+find
+
+which
+
+whereis
+
+## Logs
+
+journalctl
+
+tail -f
+
+==========================================
+FINAL DEVOPS LINUX FLOW
+=======================
+
+Developer
+|
+v
+Git Repository
+|
+v
+Build Application
+|
+v
+Maven
+|
+v
+Create JAR
+|
+v
+Linux Server
+|
++------ Java
+|
++------ Application
+|
++------ systemd
+|
++------ Logs
+|
++------ Permissions
+|
++------ Networking
+|
++------ Firewall
+|
+v
+Production Application
+
+==========================================
+REAL-TIME DEVOPS TROUBLESHOOTING FLOW
+=====================================
+
+Application is DOWN
+|
+v
+Check Process
+|
+v
+Check systemd
+|
+v
+Check Logs
+|
+v
+Check Port
+|
+v
+Check Network
+|
+v
+Check Firewall
+|
+v
+Check File Permissions
+|
+v
+Check Application Configuration
+|
+v
+Fix
+|
+v
+Validate
+|
+v
+Monitor
+
+==========================================
+IMPORTANT UBUNTU NOTES FOR STUDENTS
+===================================
+
+1. Ubuntu uses APT for package management.
+
+2. Ubuntu EC2 instances commonly use `ubuntu` as the default user,
+   depending on the AMI.
+
+3. Apache package name is:
+
+   ```
+    apache2
+   ```
+
+   NOT:
+
+   ```
+    httpd
+   ```
+
+4. Apache service name is:
+
+   ```
+    apache2
+   ```
+
+5. SSH service on Ubuntu is normally:
+
+   ```
+    ssh.service
+   ```
+
+6. SSH server configuration:
+
+   ```
+    /etc/ssh/sshd_config
+   ```
+
+   and configuration snippets may be under:
+
+   ```
+    /etc/ssh/sshd_config.d/
+   ```
+
+7. Validate SSH configuration before restarting:
+
+   ```
+    sudo sshd -t
+   ```
+
+8. Modern network commands:
+
+   ```
+    ip addr
+    ip route
+    ss
+   ```
+
+   instead of relying on legacy:
+
+   ```
+    ifconfig
+    netstat
+   ```
+
+9. Ubuntu Apache document root:
+
+   ```
+    /var/www/html
+   ```
+
+10. Ubuntu package installation:
+
+    ```
+    sudo apt update
+    sudo apt install <package>
+    ```
+
+11. For production environments:
+
+    ```
+    Use SSH keys
+    Use least privilege
+    Avoid unnecessary public ports
+    Protect sudo access
+    Monitor logs
+    Keep packages updated
+    Test changes before production
+    Never store passwords in README files
+    Never commit secrets to Git
+    ```
+
+==========================================
+END OF UBUNTU LINUX BASIC TRAINING
+==================================
