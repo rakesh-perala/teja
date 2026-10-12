@@ -1,0 +1,1763 @@
+===========================
+Version Control Softwares
+=========================
+
+=> Project contains multiple developers
+
+=> Developers will be working from different locations
+
+Problem-1 : How to integrate all the developers code at one place
+
+Problem-2 : How to monitor/track code changes
+
+```
+            - who
+            - when
+            - what
+            - why
+```
+
+=> To resolve the above problems we will use Version Control Software
+
+=> Version Control Systems help teams to:
+
+```
+    - Track code changes
+    - Maintain history
+    - Work in parallel
+    - Create branches
+    - Merge changes
+    - Roll back changes
+    - Collaborate with team members
+```
+
+=> We have several version control systems/platforms
+
+```
+            - Git
+            - GitHub
+            - GitLab
+            - Bitbucket
+            - Azure Repos
+```
+
+Note:
+
+Git is the version control system.
+
+GitHub, GitLab, Bitbucket etc. provide remote repository
+hosting and collaboration features.
+
+=========
+Git Hub
+=======
+
+=> GitHub is a cloud-based developer platform built around Git
+
+=> Using GitHub we can maintain source code repositories
+for projects
+
+=> Source code repositories are used to store project source code
+at one place
+
+Note:
+
+For every project we can create a GitHub repository based
+on the project requirement.
+
+=> GitHub repositories can be:
+
+```
+    - Public
+    - Private
+```
+
+=> GitHub provides features such as:
+
+```
+    - Git repositories
+    - Pull Requests
+    - Code Reviews
+    - Issues
+    - Branches
+    - Actions / CI/CD
+    - Releases
+    - Repository permissions
+    - Security features
+```
+
+==================
+Environment Setup
+=================
+
+1. Create account in GitHub
+
+   ```
+    URL:
+    https://github.com
+   ```
+
+2. Install Git client software on Ubuntu
+
+# Update package repository
+
+sudo apt update
+
+# Install Git
+
+sudo apt install git -y
+
+# Check Git version
+
+git --version
+
+3. Configure your name and email in Git
+
+   ```
+    git config --global user.name "Rakesh Perala"
+
+    git config --global user.email "your-email@example.com"
+   ```
+
+# Display Git configuration
+
+git config --global --list
+
+# Check individual values
+
+git config --global user.name
+
+git config --global user.email
+
+Note:
+
+Use the email address associated with your GitHub account
+if you want Git commits to be associated correctly with your
+GitHub identity.
+
+=================
+Git Architecture
+================
+
+1. Working Tree
+
+2. Staging Area
+
+3. Local Repository
+
+4. Remote Repository
+
+   ```
+            Working Tree
+                 |
+                 | git add
+                 v
+            Staging Area
+                 |
+                 | git commit
+                 v
+            Local Repository
+                 |
+                 | git push
+                 v
+            Remote Repository
+                 |
+                 | git fetch / git pull
+                 v
+            Local Repository
+   ```
+
+=====================
+Git Repo Practicals
+===================
+
+1. Create Git repository
+
+   ```
+    Example:
+
+    https://github.com/<username>/<repository>.git
+   ```
+
+2. Clone Git repository into Ubuntu VM
+
+   ```
+    git clone <repo-url>
+   ```
+
+3. Go inside repository
+
+   ```
+    cd <repository-name>
+   ```
+
+4. Check repository status
+
+   ```
+    git status
+   ```
+
+Note:
+
+Git is the client used to communicate with GitHub repositories.
+
+GitHub is the remote hosting/collaboration platform.
+
+Note:
+
+When using HTTPS authentication with GitHub, normal GitHub account
+password authentication is not used for Git operations.
+
+Use one of the supported authentication methods such as:
+
+```
+    - GitHub CLI authentication
+    - Personal Access Token
+    - SSH key authentication
+```
+
+====================
+Git Bash commands
+=================
+
+Note:
+
+On Ubuntu we normally use the Linux terminal directly.
+
+We do NOT need Git Bash.
+
+Git commands work directly from the Ubuntu terminal.
+
+git init : To initialize a Git repository
+
+```
+    git init
+```
+
+git status : To check working tree status
+
+```
+    git status
+```
+
+git add : To add files to staging area
+
+```
+    git add <filename>
+
+    git add .
+```
+
+git restore : To unstage files + discard file changes
+
+# Unstage the file
+
+git restore --staged <file-name>
+
+# Discard changes in working tree
+
+git restore <file-name>
+
+Note:
+
+Be careful with:
+
+```
+    git restore <file-name>
+```
+
+because uncommitted changes can be discarded.
+
+git commit : Send files from staging area to local repository
+
+```
+    git commit -m "commit message"
+```
+
+Example:
+
+```
+    git commit -m "Add user service configuration"
+```
+
+git log : To check commit history
+
+```
+    git log
+```
+
+# Compact commit history
+
+git log --oneline
+
+# Show recent commits
+
+git log --oneline -10
+
+git push : Send commits from local repository to remote repository
+
+```
+    git push
+```
+
+git clone : Download remote repository to local machine
+
+```
+    git clone <repo-url>
+```
+
+Example:
+
+```
+    git clone https://github.com/<username>/<repo>.git
+```
+
+git pull : Download latest changes from remote repository
+and integrate them into current branch
+
+```
+    git pull
+```
+
+git rm : Remove files from Git and working tree
+
+```
+    git rm <file-name>
+```
+
+Note:
+
+After git rm, the deletion becomes staged.
+
+To publish the deletion to remote repository:
+
+```
+    git commit -m "Remove unused file"
+
+    git push
+```
+
+=============================
+How to work with Git GUI ?
+==========================
+
+=> Git GUI provides a graphical interface for Git operations
+
+=> On Ubuntu, Git GUI can be installed if required
+
+# Install Git GUI
+
+sudo apt update
+
+sudo apt install git-gui -y
+
+# Open Git GUI
+
+git gui
+
+Note:
+
+Most DevOps engineers commonly use:
+
+```
+    Terminal
+    VS Code
+    IntelliJ IDEA
+    Eclipse
+    GitHub web interface
+```
+
+depending on the project.
+
+=============
+Git Branches
+============
+
+=> Multiple teams may work on the same project in parallel
+
+```
+    - Ongoing development
+    - Bug fixing
+    - POC / R&D
+    - Production support
+    - Release preparation
+    - Hotfixes
+```
+
+=> If every team directly changes the same branch,
+collaboration becomes difficult.
+
+******* To overcome this problem we use Git branches *********
+
+=> Git branches allow developers to work independently
+and safely in parallel.
+
+=> Using Git branches:
+
+```
+    Team-A can work on Feature-A
+
+    Team-B can work on Feature-B
+
+    Team-C can work on Bug-Fix
+
+    Release Team can prepare release
+```
+
+=> Example enterprise branches:
+
+```
+    - main
+    - develop
+    - feature/*
+    - bugfix/*
+    - release/*
+    - hotfix/*
+```
+
+Note:
+
+Branch names are decided according to the organization's
+branching strategy.
+
+We can create multiple branches in a Git repository.
+
+Note:
+
+When we clone a Git repository, Git normally checks out
+the repository's default branch.
+
+# Clone repository
+
+git clone <repo-url>
+
+# Clone a specific branch
+
+git clone -b <branch-name> <repo-url>
+
+# Display current branch
+
+git branch
+
+# Display all local branches
+
+git branch
+
+# Display local + remote branches
+
+git branch -a
+
+# Create new branch
+
+git branch <branch-name>
+
+# Switch branch
+
+git switch <branch-name>
+
+# Create and switch to new branch
+
+git switch -c <branch-name>
+
+Note:
+
+`git switch` is the modern command for branch switching.
+
+Older projects may still use:
+
+```
+    git checkout <branch-name>
+```
+
+# Delete local branch
+
+git branch -d <branch-name>
+
+# Force delete local branch
+
+git branch -D <branch-name>
+
+=============================
+What is Pull Request (PR) ?
+===========================
+
+=> Pull Request is a GitHub collaboration mechanism used to
+propose changes from one branch to another branch.
+
+Example:
+
+```
+    feature/login
+          |
+          | Pull Request
+          v
+       develop
+```
+
+Typical PR workflow:
+
+```
+    Developer
+         |
+         v
+    Feature Branch
+         |
+         v
+    git push
+         |
+         v
+    Pull Request
+         |
+         v
+    Code Review
+         |
+         v
+    CI/CD Checks
+         |
+         v
+    Approval
+         |
+         v
+    Merge
+         |
+         v
+    Target Branch
+```
+
+=> Pull Requests are commonly used for:
+
+```
+    - Code review
+    - CI validation
+    - Quality checks
+    - Security checks
+    - Team approval
+    - Branch integration
+```
+
+=====================================
+What is .gitignore file in Git repo ?
+=====================================
+
+=> `.gitignore` file is used to specify files/folders
+which should not be committed to Git repository.
+
+Examples:
+
+```
+    target/
+    .idea/
+    .project
+    .settings/
+    .classpath
+    *.log
+    *.tmp
+    .env
+```
+
+Example `.gitignore`:
+
+```
+    target/
+    *.log
+    .env
+    .idea/
+```
+
+Note:
+
+Never commit secrets such as:
+
+```
+    passwords
+    API keys
+    private keys
+    cloud credentials
+    database passwords
+    tokens
+```
+
+=======================================
+How to add collaborator in Git repo ?
+=====================================
+
+=> Go to GitHub repository
+
+=> Go to:
+
+```
+    Settings
+```
+
+=> Open repository access / collaborators settings
+
+=> Add the required team member
+
+=> Select the required access level
+
+=> Send invitation
+
+Note:
+
+The exact GitHub UI can change over time.
+
+Repository access should follow the organization's
+least-privilege policy.
+
+========================
+What is Git Conflict ?
+======================
+
+=> Git conflict occurs when Git cannot automatically combine
+changes from different branches/commits.
+
+Example:
+
+Developer-A:
+
+```
+    changes line 20
+```
+
+Developer-B:
+
+```
+    changes the same line 20
+```
+
+When Git tries to merge both changes:
+
+```
+    CONFLICT
+```
+
+=> When conflict occurs:
+
+```
+    1) Identify conflicted files
+
+    2) Open the file
+
+    3) Understand both changes
+
+    4) Decide the correct final code
+
+    5) Remove conflict markers
+
+    6) Test the code
+
+    7) git add
+
+    8) git commit
+```
+
+#### Conflicts can occur in multiple scenarios
+
+1. During `git pull`
+
+2. During `git merge`
+
+3. During `git rebase`
+
+4. During cherry-pick
+
+# Check conflict status
+
+git status
+
+Typical conflict markers:
+
+```
+    <<<<<<< HEAD
+    Current branch changes
+    =======
+    Incoming changes
+    >>>>>>> branch-name
+```
+
+After resolving:
+
+```
+    git add <file>
+
+    git commit
+```
+
+============================
+What is git stash command ?
+===========================
+
+=> `git stash` is used to temporarily store uncommitted
+working tree changes and make the working tree clean.
+
+git stash
+
+# Display stashes
+
+git stash list
+
+# Apply latest stash
+
+git stash apply
+
+# Apply and remove latest stash
+
+git stash pop
+
+# Create stash with message
+
+git stash push -m "Task-320 partial changes"
+
+## Usecase:
+
+9:00 AM
+
+=> Task-320 assigned to you
+
+=> You started working on Task-320
+
+=> You already changed m1() method
+
+=> Task is not completed
+
+12:30 PM
+
+=> Manager assigns Task-321
+
+=> Task-321 is high priority
+
+Requirement:
+
+First complete Task-321
+
+Then continue Task-320
+
+Problem:
+
+Task-320 changes are already present in working tree.
+
+If you start Task-321 changes in the same file,
+you may accidentally mix both tasks.
+
+Solution:
+
+```
+    git stash push -m "Task-320 partial changes"
+```
+
+Now:
+
+```
+    Task-320 changes
+          |
+          v
+        STASH
+```
+
+Working tree becomes clean.
+
+Then work on Task-321.
+
+After Task-321 is completed:
+
+```
+    git stash pop
+```
+
+Now Task-320 changes are restored.
+
+======================
+git fetch vs git pull
+=====================
+
+git pull:
+
+=> Downloads latest changes from remote repository
+
+=> Integrates those changes into current branch
+
+```
+    git pull
+```
+
+git fetch:
+
+=> Downloads latest remote repository information
+
+=> Does NOT modify your current working tree
+
+```
+    git fetch
+```
+
+After fetch:
+
+```
+    git merge
+```
+
+can be used when you are ready to integrate the changes.
+
+Common simplified understanding:
+
+```
+    git pull
+    =
+    git fetch
+    +
+    git merge
+```
+
+Note:
+
+`git pull --rebase` is also commonly used in some team workflows:
+
+```
+    git pull --rebase
+```
+
+The exact strategy should follow the team's Git workflow.
+
+=============
+git revert
+==========
+
+=> `git revert` creates a new commit that reverses the changes
+introduced by an earlier commit.
+
+# Check commit history
+
+git log --oneline
+
+# Revert a commit
+
+git revert <commit-id>
+
+=> Git may open an editor for the revert commit message.
+
+=> Save and close the editor.
+
+Then:
+
+```
+    git push
+```
+
+Important:
+
+`git revert` does NOT delete the old commit.
+
+It creates a new commit that reverses the previous change.
+
+Example:
+
+```
+    A ---> B ---> C
+```
+
+Revert C:
+
+```
+    A ---> B ---> C ---> C-revert
+```
+
+This is generally safer for shared branches than rewriting
+published history.
+
+=====================
+What is git fork ?
+==================
+
+=> Forking means creating a personal copy of another user's
+repository under your own GitHub account.
+
+Example:
+
+```
+    Original Repository
+            |
+            | Fork
+            v
+    Your GitHub Account
+            |
+            v
+    Your Fork
+```
+
+Common usecase:
+
+Open-source contribution
+
+```
+    Original Repository
+            |
+            v
+         Fork
+            |
+            v
+    Clone your fork
+            |
+            v
+    Create branch
+            |
+            v
+    Make changes
+            |
+            v
+    Push
+            |
+            v
+    Pull Request
+            |
+            v
+    Original Repository
+```
+
+===================
+Realtime Workflow
+=================
+
+1. Management will decide repository platform
+
+   ```
+    Ex:
+    GitHub
+    GitLab
+    Bitbucket
+    Azure Repos
+   ```
+
+2. Management will decide branching strategy
+
+   ```
+    Ex:
+    main
+    develop
+    feature/*
+    release/*
+    hotfix/*
+   ```
+
+3. Development Team should send request to create
+   Git repository to DevOps/platform team with approval.
+
+4. DevOps/platform team will manage repository access
+   according to company policy.
+
+5. Once repository is created, branches can be created
+   based on project requirements.
+
+6. Developer creates feature branch.
+
+Example:
+
+```
+    git switch -c feature/ECOM-101-login
+```
+
+7) Developer implements changes.
+
+8. Developer checks status.
+
+   ```
+    git status
+   ```
+
+9. Developer stages changes.
+
+   ```
+    git add .
+   ```
+
+10. Developer commits changes.
+
+    ```
+    git commit -m "ECOM-101 Add login functionality"
+    ```
+
+11. Developer pushes feature branch.
+
+    ```
+    git push -u origin feature/ECOM-101-login
+    ```
+
+12. Developer creates Pull Request.
+
+13. Code review is performed.
+
+14. CI/CD pipeline executes.
+
+    ```
+    Build
+    Unit Tests
+    Code Quality
+    Security Scan
+    Package
+    etc.
+    ```
+
+15. After required approvals/checks,
+    Pull Request is merged.
+
+16. Production deployment is performed according
+    to the release process.
+
+17. During production release, repository permissions,
+    branch protection and deployment controls may be used
+    according to company policy.
+
+Note:
+
+GitHub repository permissions and branch protection rules
+should be managed carefully.
+
+Note:
+
+If you have confusion with Git operations, branches or
+branching strategy, discuss with the project/team lead.
+
+Note:
+
+We need to be very careful when working with source code
+repositories because an incorrect Git operation can affect
+other team members' work.
+
+=======================
+Working with Bitbucket
+======================
+
+=> Bitbucket is a Git repository hosting and collaboration
+platform from Atlassian.
+
+=> Bitbucket is used to maintain/manage source code repositories.
+
+=> Git is used as the version control client for Bitbucket.
+
+Example:
+
+```
+    git clone <bitbucket-repository-url>
+
+    git add .
+
+    git commit -m "message"
+
+    git push
+```
+
+=============================
+Q) git merge vs git rebase
+==========================
+
+git merge:
+
+=> Combines changes from one branch into another branch.
+
+Example:
+
+```
+    git switch develop
+
+    git merge feature/login
+```
+
+Merge creates a merge commit when required by the repository
+history/configuration.
+
+git rebase:
+
+=> Replays commits from one branch on top of another base.
+
+Example:
+
+```
+    git switch feature/login
+
+    git rebase develop
+```
+
+Benefits:
+
+```
+    Cleaner linear history in suitable workflows
+```
+
+Important:
+
+Do not rebase shared/public branches casually.
+
+Rebase rewrites commit history.
+
+If commits have already been pushed and shared with other
+developers, coordinate with the team before rewriting history.
+
+=========================
+Useful Git Commands
+===================
+
+# Check Git version
+
+git --version
+
+# Check configuration
+
+git config --global --list
+
+# Initialize repository
+
+git init
+
+# Check status
+
+git status
+
+# Add one file
+
+git add <file>
+
+# Add all files
+
+git add .
+
+# Commit
+
+git commit -m "message"
+
+# Show history
+
+git log --oneline
+
+# Show branches
+
+git branch -a
+
+# Create branch
+
+git switch -c feature/demo
+
+# Switch branch
+
+git switch develop
+
+# Push branch
+
+git push -u origin feature/demo
+
+# Download remote information
+
+git fetch
+
+# Pull latest changes
+
+git pull
+
+# Show remotes
+
+git remote -v
+
+# Add remote
+
+git remote add origin <repo-url>
+
+# Rename current branch to main
+
+git branch -M main
+
+# Push main branch
+
+git push -u origin main
+
+# Show changed files
+
+git status
+
+# Show unstaged changes
+
+git diff
+
+# Show staged changes
+
+git diff --cached
+
+# Stash changes
+
+git stash
+
+# Show stash
+
+git stash list
+
+# Restore stash
+
+git stash pop
+
+# Revert commit
+
+git revert <commit-id>
+
+# Remove tracked file
+
+git rm <file>
+
+# Show remote branches
+
+git branch -r
+
+# Show remote information
+
+git remote show origin
+
+==========================
+Ubuntu Git Environment
+======================
+
+=> On Ubuntu we use the normal Linux terminal.
+
+=> Git does not require Git Bash on Ubuntu.
+
+# Install Git
+
+sudo apt update
+
+sudo apt install git -y
+
+# Verify installation
+
+git --version
+
+# Configure identity
+
+git config --global user.name "Your Name"
+
+git config --global user.email "[your-email@example.com](mailto:your-email@example.com)"
+
+# Verify
+
+git config --global --list
+
+==========================
+GitHub Authentication
+=====================
+
+=> GitHub repositories can be accessed using secure authentication
+methods.
+
+Common methods:
+
+```
+    1) SSH authentication
+
+    2) Personal Access Token
+
+    3) GitHub CLI authentication
+```
+
+For DevOps/Linux servers, SSH authentication is commonly used.
+
+# Generate SSH key
+
+ssh-keygen -t ed25519 -C "[your-email@example.com](mailto:your-email@example.com)"
+
+# Start SSH agent
+
+eval "$(ssh-agent -s)"
+
+# Add private key to SSH agent
+
+ssh-add ~/.ssh/id_ed25519
+
+# Display public key
+
+cat ~/.ssh/id_ed25519.pub
+
+=> Copy the public key and add it to GitHub:
+
+```
+    GitHub
+       |
+       v
+    Settings
+       |
+       v
+    SSH and GPG keys
+       |
+       v
+    New SSH key
+```
+
+# Test GitHub SSH connection
+
+ssh -T [git@github.com](mailto:git@github.com)
+
+Then clone using SSH:
+
+git clone [git@github.com](mailto:git@github.com):<username>/<repository>.git
+
+IMPORTANT:
+
+Never share:
+
+```
+    ~/.ssh/id_ed25519
+```
+
+The private key must remain private.
+
+Only the public key:
+
+```
+    ~/.ssh/id_ed25519.pub
+```
+
+should be added to GitHub.
+
+==========================
+Git Remote
+==========
+
+=> Remote represents a repository location outside
+your local repository.
+
+# Display remote
+
+git remote -v
+
+# Add remote
+
+git remote add origin <repo-url>
+
+# Change remote URL
+
+git remote set-url origin <repo-url>
+
+# Display remote details
+
+git remote show origin
+
+==========================
+Git Tags
+========
+
+=> Tags are used to mark important points in Git history.
+
+Example:
+
+```
+    v1.0.0
+
+    v1.1.0
+
+    v2.0.0
+```
+
+# Create tag
+
+git tag v1.0.0
+
+# Display tags
+
+git tag
+
+# Push tag
+
+git push origin v1.0.0
+
+# Push all tags
+
+git push --tags
+
+Real-time use:
+
+```
+    Application Release
+            |
+            v
+         v1.0.0
+            |
+            v
+    Production Deployment
+```
+
+==========================
+Git Reset
+=========
+
+=> `git reset` can move the current branch reference and,
+depending on the option, modify staging/working tree.
+
+# Soft reset
+
+git reset --soft HEAD~1
+
+=> Commit is removed from branch history,
+but changes remain staged.
+
+# Mixed reset
+
+git reset HEAD~1
+
+=> Commit is removed from branch history,
+changes remain in working tree.
+
+# Hard reset
+
+git reset --hard HEAD~1
+
+=> Commit and changes can be removed.
+
+WARNING:
+
+`git reset --hard` can permanently discard uncommitted work.
+
+Use carefully.
+
+==========================
+Git Clean
+=========
+
+=> `git clean` removes untracked files/directories.
+
+# Preview first
+
+git clean -n
+
+# Remove untracked files
+
+git clean -f
+
+# Preview untracked files/directories
+
+git clean -nd
+
+# Remove untracked files/directories
+
+git clean -fd
+
+WARNING:
+
+Always use `git clean -n` before destructive cleanup.
+
+==========================
+Git Diff
+========
+
+=> Used to compare changes.
+
+# Working tree changes
+
+git diff
+
+# Staged changes
+
+git diff --cached
+
+# Compare branches
+
+git diff develop..feature/login
+
+==========================
+Git Cherry-Pick
+===============
+
+=> `git cherry-pick` applies the changes introduced by
+a specific commit onto the current branch.
+
+Example:
+
+```
+    git switch release
+
+    git cherry-pick <commit-id>
+```
+
+Real-time usecase:
+
+A production hotfix was implemented in another branch.
+
+Instead of merging the complete branch, the team may decide
+to bring only the required hotfix commit.
+
+Note:
+
+Cherry-pick can create conflicts.
+
+After resolving:
+
+```
+    git add .
+
+    git cherry-pick --continue
+```
+
+To cancel cherry-pick:
+
+```
+    git cherry-pick --abort
+```
+
+==========================
+Git Remote Branch Cleanup
+=========================
+
+# Fetch latest remote information
+
+git fetch --prune
+
+=> `--prune` removes stale remote-tracking references
+for branches that no longer exist on the remote.
+
+==========================
+GitHub CLI
+==========
+
+=> GitHub CLI provides command-line access to GitHub.
+
+Command:
+
+```
+    gh
+```
+
+If GitHub CLI is installed:
+
+```
+    gh auth login
+```
+
+=> It can be used to authenticate and work with
+GitHub repositories from the terminal.
+
+===================
+Realtime DevOps Flow
+====================
+
+Developer
+|
+v
+Jira / Work Item
+|
+v
+Feature Branch
+|
+v
+Code Changes
+|
+v
+git status
+|
+v
+git add
+|
+v
+git commit
+|
+v
+git push
+|
+v
+Pull Request
+|
+v
+Code Review
+|
+v
+CI Pipeline
+|
++------ Build
+|
++------ Unit Tests
+|
++------ SonarQube
+|
++------ Security Scan
+|
++------ Docker Build
+|
++------ Artifact/Image
+|
+v
+Merge
+|
+v
+Release
+|
+v
+Deployment
+|
+v
+Production
+
+===============================
+Enterprise Branching Example
+============================
+
+main
+|
+|----------------------------- Production
+|
++---- develop
+|
++---- feature/ECOM-101-login
+|
++---- feature/ECOM-102-payment
+|
++---- bugfix/ECOM-103-cart
+|
++---- release/v1.0.0
+|
++---- hotfix/v1.0.1
+
+Typical flow:
+
+feature
+|
+v
+develop
+|
+v
+release
+|
+v
+main
+|
+v
+production
+
+Note:
+
+Actual branching strategy depends on the organization.
+
+Do not blindly copy a branching model into production.
+
+=========================
+Production Git Guidelines
+=========================
+
+1. Never commit passwords.
+
+2. Never commit API keys.
+
+3. Never commit AWS credentials.
+
+4. Never commit private SSH keys.
+
+5. Never force-push shared branches unless explicitly approved.
+
+6. Protect important branches.
+
+7. Use Pull Requests for code review.
+
+8. Use CI checks before merge.
+
+9. Use meaningful commit messages.
+
+10. Keep commits focused.
+
+11. Pull/fetch latest changes before starting work.
+
+12. Do not use `git reset --hard` without understanding
+    what will be deleted.
+
+13. Do not use `git clean -fd` without checking the preview.
+
+14. Tag production releases.
+
+15. Keep production deployment traceable to a Git commit/tag.
+
+=========
+Summary
+=======
+
+1. What is Version Control & why ?
+
+2. Git Introduction
+
+3. GitHub Introduction
+
+4. Git Setup on Ubuntu
+
+5. Git Architecture
+
+   ```
+    - Working Tree
+    - Staging Area
+    - Local Repository
+    - Remote Repository
+   ```
+
+6. Git commands
+
+   ```
+    - git config
+    - git init
+    - git status
+    - git add
+    - git restore
+    - git commit
+    - git push
+    - git clone
+    - git pull
+    - git fetch
+    - git merge
+    - git rm
+    - git log
+    - git stash
+    - git stash apply
+    - git branch
+    - git switch
+    - git revert
+    - git remote
+    - git tag
+    - git reset
+    - git clean
+    - git diff
+    - git cherry-pick
+   ```
+
+7. Working with Git GUI
+
+8. Working with Git branches
+
+9. Pull Requests
+
+10. Git branching strategy
+
+11. Adding collaborators
+
+12. Git conflicts
+
+13. Git stash
+
+14. git fetch vs git pull
+
+15. git revert
+
+16. Git fork
+
+17. Git merge vs git rebase
+
+18. Git authentication
+
+19. Git remote
+
+20. Git tags
+
+21. Git reset
+
+22. Git clean
+
+23. Git diff
+
+24. Git cherry-pick
+
+25. GitHub CLI
+
+26. Real-Time DevOps workflow
+
+27. Production Git guidelines
+
+28. Bitbucket
+
+==========================================
+END OF GIT & GITHUB TRAINING
+============================
